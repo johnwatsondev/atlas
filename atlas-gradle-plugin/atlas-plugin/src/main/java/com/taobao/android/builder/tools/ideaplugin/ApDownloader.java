@@ -251,7 +251,13 @@ public class ApDownloader {
     }
 
     public File downloadAP(String mtlConfigUrl, File root) throws IOException {
-        String downloadUrl = getDownloadUrl(mtlConfigUrl);
+        String downloadUrl;
+        if (mtlConfigUrl.endsWith(".ap")) {
+            downloadUrl = mtlConfigUrl;
+        } else {
+            // TODO: 目前不支持 MTL4
+            downloadUrl = getDownloadUrl(mtlConfigUrl);
+        }
         String errorMessage = "Missing ap downloadUrl for mtlConfigUrl " + mtlConfigUrl + " "
                 + "<<<<< 请确保选择的是整包ap,并且至少打出一个包<<<<<请查看开发文档 https://yuque.antfin-inc.com/chenzhong.cz/yzq9kz/gqkeg9#wylRo";
         checkNotNull(downloadUrl, errorMessage);

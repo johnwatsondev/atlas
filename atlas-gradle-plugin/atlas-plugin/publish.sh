@@ -1,1 +1,2 @@
-../gradlew clean build bintray
+../gradlew clean build
+../gradlew publish
