@@ -234,11 +234,7 @@ import com.taobao.android.builder.dependency.model.AwbBundle;
 import com.taobao.android.builder.extension.TBuildType;
 import com.taobao.android.builder.tasks.manager.MtlBaseTaskAction;
 import com.taobao.android.builder.tools.xml.XmlHelper;
-import com.taobao.android.builder.tools.zip.Better7Zip;
 import com.taobao.android.builder.tools.zip.BetterZip;
-import com.taobao.android.builder.tools.zip.ZipUtils;
-import org.apache.commons.compress.archivers.sevenz.SevenZArchiveEntry;
-import org.apache.commons.compress.archivers.sevenz.SevenZFile;
 import org.apache.commons.lang.StringUtils;
 import org.dom4j.Attribute;
 import org.dom4j.Document;
@@ -329,7 +325,7 @@ public class PrepareAPTask extends BaseTask {
         File apBaseFile = getApBaseFile();
 
         if (apBaseFile != null) {
-            Better7Zip.unzipDirectory(apBaseFile, explodedDir);
+            BetterZip.unzipDirectory(apBaseFile, explodedDir);
             if (isIncremental()) {
                 extractBaseBundles();
                 generateIncrementalMainManifest();
